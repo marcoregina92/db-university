@@ -1,0 +1,49 @@
+﻿JOIN:
+
+
+QUERY 1:
+
+SELECT students.name, students.surname, students.id, degrees.name AS corso_di_laurea
+FROM `students`
+JOIN degrees
+ON students.degree_id = degrees.id
+WHERE degrees.id = 53;
+
+QUERY 2:
+
+SELECT degrees.name, degrees.level, degrees.address, departments.name
+FROM `degrees`
+JOIN departments
+ON degrees.department_id = departments.id
+WHERE degrees.level = 'magistrale'
+AND departments.name = 'dipartimento di neuroscienze';
+
+QUERY 3:
+
+SELECT courses.name, courses.description, teachers.name, teachers.surname 
+FROM `courses`
+JOIN course_teacher ON courses.id = course_teacher.course_id
+JOIN teachers ON teachers.id = course_teacher.teacher_id
+WHERE teachers.name = "Fulvio";
+
+QUERY 4:
+
+SELECT * 
+FROM `students`
+JOIN degrees
+ON students.degree_id = degrees.id
+JOIN departments
+ON degrees.department_id = departments.id
+ORDER BY students.surname, students.name;
+
+QUERY 5:
+
+SELECT * 
+FROM `degrees`
+JOIN courses
+ON courses.degree_id = degrees.id
+JOIN course_teacher
+ON course_teacher.course_id = courses.id
+JOIN teachers
+ON teachers.id = course_teacher.teacher_id;
+
